@@ -1,9 +1,27 @@
 var express = require('express');
-var app = express();
+var bodyParser = require('body-parser');
+var cors = require('cors');
+var useragent = require('express-useragent');
+
+var app = module.exports = express();
+app.use(bodyParser.json());
+app.use(cors());
+app.use(useragent.express());
+
+
+
+var api = 'api/whoami';
+app.get(api, function(req, res){
+    var language= req.acceptsLanguanges();
+    var software = req.useragent;
+    var ipaddress= req.ip;
+
+    res.json({'ipaddress': ipaddress, 'software': software, 'language': language[0]})
+});
 
 //static text response
-app.get('/', function(req, res) { 
-    res.send('<p>Visit <a href="whoami">/whoami</a> to get the IP address, language and operating system for your browser.</p>');
+/*app.get('/', function(req, res) { 
+    res.send('<p>Visit <a href="#">/whoami</a> to get the IP address, language and operating system for your browser.</p>');
   });
 
  //initialzing to send back response to the browser
@@ -22,9 +40,9 @@ app.get('/', function(req, res) {
     
 
     res.send(result);
-  });
+  });*/
 
 
-  app.listen(8080, function() {
-    console.log('App listening on port 8080');
+  app.listen(3000, function() {
+    console.log('App listening on port 3000');
 });
