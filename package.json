@@ -2,6 +2,7 @@
   "name": "request-header-parser-microservice",
   "version": "1.0.0",
   "description": "ffc project header parser",
+
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
@@ -9,7 +10,7 @@
     "express-useragent": "^1.0.12"
   },
   "private": true,
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

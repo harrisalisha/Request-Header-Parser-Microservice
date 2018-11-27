@@ -13,7 +13,7 @@ app.use(useragent.express());
 var api = 'api/whoami';
 app.get(api, function(req, res){
     var language= req.acceptsLanguanges();
-    var software = req.useragent;
+    var software = "OS:"+ req.useragent.os + ", Browser:"+ req.user;
     var ipaddress= req.ip;
 
     res.json({'ipaddress': ipaddress, 'software': software, 'language': language[0]})
